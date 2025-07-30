@@ -106,7 +106,7 @@ cd backend
 ```bash
 cd frontend
 npm install
-npm run dev
+npm run serve
 ```
 
 ---
