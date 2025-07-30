@@ -79,6 +79,18 @@ The user can perform the following actions: upload files, make queries, and view
 
 ---
 
+**Configuration:**
+Before running the backend of the project, you need to manually add your API keys to the src/main/resources/application.properties file as shown below:
+
+application.properties
+```
+jina.api.key=Bearer YOUR_JINA_API_KEY
+gemini.api.key=YOUR_GEMINI_API_KEY
+```
+⚠️ Warning: Never commit the application.properties file to GitHub! This file is included in .gitignore and must remain private to protect your API keys.
+
+
+
 ## Setup and Run
 
 ### Backend (Spring Boot)
