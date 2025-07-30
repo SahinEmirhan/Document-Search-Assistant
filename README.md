@@ -85,7 +85,7 @@ The user can perform the following actions: upload files, make queries, and view
 
 ```bash
 cd backend
-./mvnw spring-boot:run
+./gradlew bootRun
 ```
 
 ### Frontend (Vue 3)
