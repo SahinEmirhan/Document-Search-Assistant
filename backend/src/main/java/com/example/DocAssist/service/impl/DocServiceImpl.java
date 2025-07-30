@@ -52,10 +52,39 @@ public class DocServiceImpl implements IDocService {
 
 
         List<String> textList = new ArrayList<>();
-        String[] textArr = stripper.getText(document).split("\\r?\\n\\r?\\n");
-        if (textArr.length < 5) {
-            textArr = stripper.getText(document).split("\\.");
+        String[] textArr = stripper.getText(document).split("\\r?\\n");
+        int targetChunks = textArr.length;
+        if (textArr.length > 5000) {
+            targetChunks = textArr.length / 12;
         }
+        else if(textArr.length > 1000) {
+            targetChunks = textArr.length / 8;
+        }
+        else if(textArr.length > 500) {
+            targetChunks = textArr.length / 5;
+        }
+        else if (textArr.length > 200) {
+            targetChunks = textArr.length / 2;
+        }
+
+        int groupSize = (int) Math.ceil((double) textArr.length / targetChunks);
+
+        List<String> newChunks = new ArrayList<>();
+        StringBuilder chunkBuilder = new StringBuilder();
+
+        for (int i = 0; i < textArr.length; i++) {
+            chunkBuilder.append(textArr[i]);
+            // Parçaları birleştirirken araya bir boşluk veya yeni satır eklemek iyi olur
+            chunkBuilder.append(" ");
+
+            if ((i + 1) % groupSize == 0 || i == textArr.length - 1) {
+                newChunks.add(chunkBuilder.toString().trim());
+                chunkBuilder.setLength(0);
+            }
+        }
+
+            // Yeni bölünmüş parçalardan oluşan listeyi tekrar diziye çevir
+        textArr = newChunks.toArray(new String[0]);
         int windowSize = 4;
 
         List<String> cleanedParagraphs = new ArrayList<>();
