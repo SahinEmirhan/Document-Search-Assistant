@@ -97,6 +97,7 @@ gemini.api.key=YOUR_GEMINI_API_KEY
 
 ```bash
 cd backend
+./gradlew build
 ./gradlew bootRun
 ```
 
