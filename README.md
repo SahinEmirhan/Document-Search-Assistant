@@ -79,11 +79,11 @@ The user can perform the following actions: upload files, make queries, and view
 
 ---
 
-**Configuration:**
+## Configuration
 Before running the backend of the project, you need to manually add your API keys to the src/main/resources/application.properties file as shown below:
 
-application.properties
-```
+**application.properties:**
+```properties
 jina.api.key=Bearer YOUR_JINA_API_KEY
 gemini.api.key=YOUR_GEMINI_API_KEY
 ```
